@@ -3,7 +3,7 @@ const path = require('path');
 const { readProposal } = require('./lib/proposal-store');
 const { buildProductGallery } = require('./lib/image-catalog');
 const { buildPageAssets } = require('./lib/local-assets');
-const { attachTeamAssets, getTeamImagePath, getWorkspaceRoot } = require('./lib/team-assets');
+const { attachTeamAssets } = require('./lib/team-assets');
 const apiRoutes = require('./routes/api');
 const adminRoutes = require('./routes/admin');
 
@@ -25,10 +25,6 @@ const site = {
   tagline: 'Strategic partnership proposal — UNLOCK GROUP LIMITED × JWAPANO Bamboo Tanzania'
 };
 
-const workspaceRoot = getWorkspaceRoot(publicDir);
-
-app.use('/team-assets', express.static(workspaceRoot));
-
 function loadProposalViewData() {
   const proposal = readProposal();
   const descriptions = proposal.product_descriptions || {};
@@ -47,7 +43,7 @@ function loadProposalViewData() {
     descriptions
   );
   const assets = buildPageAssets(publicDir);
-  const teamMembers = attachTeamAssets(proposal.team?.members || [], workspaceRoot);
+  const teamMembers = attachTeamAssets(proposal.team?.members || [], publicDir);
   return { proposal, militaryGallery, commercialGallery, assets, teamMembers };
 }
 
