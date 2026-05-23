@@ -93,7 +93,6 @@
     }
   },
   "plantation_strategy": {
-      "team_section",
     "locations": [
       "Military bases",
       "Reserved government lands",
@@ -206,6 +205,7 @@
   "conclusion": "The strategic partnership between UNLOCK GROUP LIMITED and JWAPANO Bamboo Tanzania presents a transformative opportunity to build a sustainable bamboo industry in Tanzania that supports both national defence and public industrial development. By integrating bamboo plantation development within military bases and utilizing existing industrial infrastructure in Lindi, the project creates a scalable green manufacturing ecosystem capable of generating economic, environmental, and strategic national benefits for Tanzania.",
   "section_order": [
     "hero_section",
+    "team_section",
     "vision_mission",
     "strategic_objectives",
     "partnership_structure",
