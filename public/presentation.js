@@ -90,7 +90,7 @@ function buildSlidesFromProposal() {
     const title = section.dataset.slide;
     const heading = section.querySelector('.section-heading h2, .proposal-title, h1')?.textContent?.trim() || title;
     const lead = section.querySelector('.lead-copy, .section-heading > p, .conclusion-text')?.textContent?.trim();
-    const listItems = [...section.querySelectorAll('.establishment-list li, .mission-card li, .objective-card p, .timeline-item strong, .timeline-col li, .glass-card li, .industrial-card h3, .impact-card, .growth-card, .revenue-card p, .investor-card h3')]
+    const listItems = [...section.querySelectorAll('.establishment-list li, .mission-card li, .team-card h3, .team-position, .team-card p, .objective-card p, .timeline-item strong, .timeline-col li, .glass-card li, .industrial-card h3, .impact-card, .growth-card, .revenue-card p, .investor-card h3')]
       .map((el) => el.textContent.trim())
       .filter(Boolean);
 

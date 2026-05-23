@@ -122,6 +122,74 @@
   line-height: 1.9;
 }
 
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201, 162, 39, 0.35);
+}
+
+.team-photo {
+  position: relative;
+  aspect-ratio: 4 / 4.2;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(30, 77, 43, 0.2), rgba(7, 21, 13, 0.9));
+}
+
+.team-photo::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 28%;
+  background: linear-gradient(180deg, transparent, rgba(7, 21, 13, 0.88));
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-copy {
+  padding: 20px 22px 24px;
+}
+
+.team-position {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.team-copy h3 {
+  margin: 0 0 10px;
+  font-size: 1.75rem;
+  color: var(--text);
+}
+
+.team-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
 .objective-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -571,6 +639,7 @@
 @media (max-width: 992px) {
   .two-col-cards,
   .map-cards,
+  .team-grid,
   .partnership-timeline,
   .growth-dashboard,
   .stats-row {

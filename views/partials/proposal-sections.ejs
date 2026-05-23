@@ -28,10 +28,34 @@
   </div>
 </section>
 
-<section id="vision-mission" class="section-pad alt-surface proposal-section" data-slide="Vision & Mission" data-section="2">
+<section id="team" class="section-pad alt-surface proposal-section" data-slide="About Our Team" data-section="2">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">01 — Vision & Mission</span>
+      <span class="eyebrow">01 — About Our Team</span>
+      <h2>Meet the people driving the partnership</h2>
+      <p><%= proposal.team?.intro %></p>
+    </div>
+    <div class="team-grid">
+      <% teamMembers.forEach(function(member) { %>
+        <article class="team-card reveal">
+          <div class="team-photo">
+            <img src="<%= member.imageUrl %>" alt="<%= member.name %>" loading="lazy" />
+          </div>
+          <div class="team-copy">
+            <span class="team-position"><%= member.position %></span>
+            <h3><%= member.name %></h3>
+            <p><%= member.bio %></p>
+          </div>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="vision-mission" class="section-pad alt-surface proposal-section" data-slide="Vision & Mission" data-section="3">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">02 — Vision & Mission</span>
       <h2>Regional leadership in sustainable bamboo industrialization</h2>
     </div>
     <div class="two-col-cards reveal">
@@ -51,10 +75,10 @@
   </div>
 </section>
 
-<section id="strategic-objectives" class="section-pad proposal-section" data-slide="Strategic Objectives" data-section="3">
+<section id="strategic-objectives" class="section-pad proposal-section" data-slide="Strategic Objectives" data-section="4">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">02 — Strategic Objectives</span>
+      <span class="eyebrow">03 — Strategic Objectives</span>
       <h2>Building Tanzania's national bamboo value chain</h2>
     </div>
     <div class="objective-grid">
@@ -68,10 +92,10 @@
   </div>
 </section>
 
-<section id="partnership-structure" class="section-pad alt-surface proposal-section" data-slide="Partnership Structure" data-section="4">
+<section id="partnership-structure" class="section-pad alt-surface proposal-section" data-slide="Partnership Structure" data-section="5">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">03 — Partnership Structure</span>
+      <span class="eyebrow">04 — Partnership Structure</span>
       <h2>JWAPANO Bamboo Tanzania and UNLOCK GROUP LIMITED</h2>
     </div>
     <div class="partnership-timeline reveal">
@@ -94,10 +118,10 @@
   </div>
 </section>
 
-<section id="value-chain" class="section-pad proposal-section" data-slide="Value Chain" data-section="5">
+<section id="value-chain" class="section-pad proposal-section" data-slide="Value Chain" data-section="6">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">04 — National Value Chain</span>
+      <span class="eyebrow">05 — National Value Chain</span>
       <h2>From plantation to markets</h2>
     </div>
     <div class="timeline-strip reveal">
@@ -111,10 +135,10 @@
   </div>
 </section>
 
-<section id="plantation-strategy" class="section-pad alt-surface proposal-section" data-slide="Plantation Strategy" data-section="6">
+<section id="plantation-strategy" class="section-pad alt-surface proposal-section" data-slide="Plantation Strategy" data-section="7">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">05 — Plantation Development</span>
+      <span class="eyebrow">06 — Plantation Development</span>
       <h2>Proposed Bamboo Plantation Development</h2>
     </div>
     <div class="map-cards reveal">
@@ -137,10 +161,10 @@
   </div>
 </section>
 
-<section id="manufacturing" class="section-pad proposal-section" data-slide="Manufacturing" data-section="7">
+<section id="manufacturing" class="section-pad proposal-section" data-slide="Manufacturing" data-section="8">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">06 — Industrial Development</span>
+      <span class="eyebrow">07 — Industrial Development</span>
       <h2>Manufacturing and Industrial Development</h2>
       <p><%= proposal.manufacturing_development.existing_factory %></p>
     </div>
@@ -155,10 +179,10 @@
   </div>
 </section>
 
-<section id="military-products" class="section-pad alt-surface proposal-section" data-slide="Military Products" data-section="8">
+<section id="military-products" class="section-pad alt-surface proposal-section" data-slide="Military Products" data-section="9">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">07 — Defence Products</span>
+      <span class="eyebrow">08 — Defence Products</span>
       <h2>Military Products to be Produced</h2>
       <p>Each product line below is illustrated with matched imagery from the GDBIT military product portfolio.</p>
     </div>
@@ -182,10 +206,10 @@
   </div>
 </section>
 
-<section id="commercial-products" class="section-pad proposal-section" data-slide="Commercial Products" data-section="9">
+<section id="commercial-products" class="section-pad proposal-section" data-slide="Commercial Products" data-section="10">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">08 — Public & Commercial Products</span>
+      <span class="eyebrow">09 — Public & Commercial Products</span>
       <h2>Public and Commercial Products</h2>
       <p>Commercial product lines for local markets and export, illustrated with project imagery.</p>
     </div>
@@ -209,10 +233,10 @@
   </div>
 </section>
 
-<section id="environmental-impact" class="section-pad alt-surface proposal-section" data-slide="Environmental Impact" data-section="10">
+<section id="environmental-impact" class="section-pad alt-surface proposal-section" data-slide="Environmental Impact" data-section="11">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">09 — Environmental Impact</span>
+      <span class="eyebrow">10 — Environmental Impact</span>
       <h2>Climate-smart industrialization</h2>
     </div>
     <div class="impact-cards reveal">
@@ -224,10 +248,10 @@
   </div>
 </section>
 
-<section id="economic-impact" class="section-pad proposal-section" data-slide="Economic Impact" data-section="11">
+<section id="economic-impact" class="section-pad proposal-section" data-slide="Economic Impact" data-section="12">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">10 — Economic Impact</span>
+      <span class="eyebrow">11 — Economic Impact</span>
       <h2>Green growth and industrial productivity</h2>
     </div>
     <div class="growth-items reveal">
@@ -238,10 +262,10 @@
   </div>
 </section>
 
-<section id="revenue-streams" class="section-pad alt-surface proposal-section" data-slide="Revenue Streams" data-section="12">
+<section id="revenue-streams" class="section-pad alt-surface proposal-section" data-slide="Revenue Streams" data-section="13">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">11 — Revenue Streams</span>
+      <span class="eyebrow">12 — Revenue Streams</span>
       <h2>Proposed Revenue Streams</h2>
     </div>
     <div class="revenue-grid reveal">
@@ -255,10 +279,10 @@
   </div>
 </section>
 
-<section id="investment" class="section-pad proposal-section" data-slide="Investment Opportunity" data-section="13">
+<section id="investment" class="section-pad proposal-section" data-slide="Investment Opportunity" data-section="14">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">12 — Investment Opportunity</span>
+      <span class="eyebrow">13 — Investment Opportunity</span>
       <h2>Partner with GDBIT</h2>
     </div>
     <div class="investor-grid reveal">
@@ -271,11 +295,11 @@
   </div>
 </section>
 
-<section id="conclusion" class="proposal-conclusion section-pad proposal-section" data-slide="Conclusion" data-section="14">
+<section id="conclusion" class="proposal-conclusion section-pad proposal-section" data-slide="Conclusion" data-section="15">
   <div class="conclusion-bg" aria-hidden="true"></div>
   <div class="container position-relative">
     <div class="section-heading reveal">
-      <span class="eyebrow gold-accent">13 — Conclusion</span>
+      <span class="eyebrow gold-accent">14 — Conclusion</span>
       <h2>A transformative green manufacturing ecosystem</h2>
       <p class="conclusion-text"><%= proposal.conclusion %></p>
       <div class="hero-actions mt-4 justify-content-center d-flex flex-wrap gap-3">

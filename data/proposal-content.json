@@ -12,6 +12,31 @@
       "Climate-smart industrialization initiatives"
     ]
   },
+  "team": {
+    "title": "About Our Team",
+    "subtitle": "Meet the people driving the partnership",
+    "intro": "These profiles come from the team summaries supplied with the project materials.",
+    "members": [
+      {
+        "id": "mohamed",
+        "name": "Mohamed Lawrence Lwanji",
+        "position": "Co-founder",
+        "bio": "Mohamed Lwanji is a business developer with experience in tax administration and transport operations."
+      },
+      {
+        "id": "frank",
+        "name": "Frank Ephraim Kamina",
+        "position": "Co-founder",
+        "bio": "Frank Kamina is an expert in export and port operations with more than ten years of experience in the maritime industry."
+      },
+      {
+        "id": "baraka",
+        "name": "Baraka Peneza",
+        "position": "Director, Unlock Group Limited",
+        "bio": "Baraka is the Chief Executive Officer at JWAPANO Group of Companies. He has considerable experience in project management, product innovation, finance, research, and development."
+      }
+    ]
+  },
   "vision_mission": {
     "vision": "To position Tanzania as a regional leader in sustainable bamboo industrialization by integrating military land resources, green manufacturing, and eco-industrial development.",
     "mission": [
@@ -68,6 +93,7 @@
     }
   },
   "plantation_strategy": {
+      "team_section",
     "locations": [
       "Military bases",
       "Reserved government lands",
