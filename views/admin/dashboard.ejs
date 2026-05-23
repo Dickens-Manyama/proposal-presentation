@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body { background: #07150d; color: #edf7e8; min-height: 100vh; }
+      .card { background: rgba(10,26,16,.9); border-color: rgba(154,230,123,.2); }
+      .form-control, .form-select { background: rgba(255,255,255,.06); border-color: rgba(154,230,123,.2); color: #edf7e8; }
+      .form-control:focus { background: rgba(255,255,255,.08); color: #edf7e8; border-color: #9ae67b; box-shadow: 0 0 0 .2rem rgba(154,230,123,.15); }
+      .btn-emerald { background: linear-gradient(135deg, #9ae67b, #2fb35c); color: #06110a; border: none; }
+      .thumb { width: 80px; height: 60px; object-fit: cover; border-radius: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h1 class="h3 mb-1">GDBIT Admin</h1>
+          <p class="text-secondary mb-0">Manage proposal content, images, and exports</p>
+        </div>
+        <a href="/" class="btn btn-outline-light btn-sm">← Back to site</a>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <label class="form-label">Admin token</label>
+          <input type="password" id="admin-token" class="form-control" placeholder="Enter admin password" />
+          <small class="text-secondary">Default: gdbi-admin (set GDBI_ADMIN_PASSWORD in production)</small>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs mb-4" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-content">Content</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-images">Images</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-export">Export</button></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab-content">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3">
+                <label class="form-label">Executive summary</label>
+                <textarea id="field-summary" class="form-control" rows="5"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Conclusion</label>
+                <textarea id="field-conclusion" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Vision</label>
+                <textarea id="field-vision" class="form-control" rows="2"></textarea>
+              </div>
+              <button class="btn btn-emerald" id="btn-save-content">Save content</button>
+              <span id="save-status" class="ms-3 text-success"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-images">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="h6">Military products</h2>
+                  <input type="file" id="upload-military" class="form-control mb-3" accept="image/*" />
+                  <div id="military-images" class="d-flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="h6">Commercial products</h2>
+                  <input type="file" id="upload-commercial" class="form-control mb-3" accept="image/*" />
+                  <div id="commercial-images" class="d-flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-export">
+          <div class="card">
+            <div class="card-body d-flex flex-wrap gap-2">
+              <a class="btn btn-emerald" href="#" data-export-admin="pdf">Download PDF</a>
+              <a class="btn btn-emerald" href="#" data-export-admin="docx">Download Word</a>
+              <a class="btn btn-emerald" href="#" data-export-admin="pptx">Download PowerPoint</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const tokenInput = document.getElementById('admin-token');
+      const headers = () => ({ 'Content-Type': 'application/json', 'x-admin-token': tokenInput.value });
+
+      async function loadContent() {
+        const res = await fetch('/admin/api/content?token=' + encodeURIComponent(tokenInput.value), {
+          headers: headers()
+        });
+        if (!res.ok) return alert('Invalid admin token');
+        const data = await res.json();
+        document.getElementById('field-summary').value = data.hero.executive_summary;
+        document.getElementById('field-conclusion').value = data.conclusion;
+        document.getElementById('field-vision').value = data.vision_mission.vision;
+      }
+
+      document.getElementById('btn-save-content').addEventListener('click', async () => {
+        const body = {
+          hero: { executive_summary: document.getElementById('field-summary').value },
+          conclusion: document.getElementById('field-conclusion').value,
+          vision_mission: { vision: document.getElementById('field-vision').value }
+        };
+        const res = await fetch('/admin/api/content?token=' + encodeURIComponent(tokenInput.value), {
+          method: 'PUT',
+          headers: headers(),
+          body: JSON.stringify(body)
+        });
+        document.getElementById('save-status').textContent = res.ok ? 'Saved.' : 'Error saving.';
+      });
+
+      async function loadImages(type, containerId) {
+        const res = await fetch(`/admin/api/images/${type}?token=` + encodeURIComponent(tokenInput.value), {
+          headers: headers()
+        });
+        if (!res.ok) return;
+        const images = await res.json();
+        const el = document.getElementById(containerId);
+        el.innerHTML = images.map((img) => `<img class="thumb" src="${img.url}" alt="${img.file}" title="${img.file}" />`).join('');
+      }
+
+      async function uploadImage(type, file) {
+        const fd = new FormData();
+        fd.append('image', file);
+        const res = await fetch(`/admin/api/images/${type}?token=` + encodeURIComponent(tokenInput.value), {
+          method: 'POST',
+          headers: { 'x-admin-token': tokenInput.value },
+          body: fd
+        });
+        if (res.ok) loadImages(type, type === 'commercial' ? 'commercial-images' : 'military-images');
+      }
+
+      document.getElementById('upload-military').addEventListener('change', (e) => {
+        if (e.target.files[0]) uploadImage('military', e.target.files[0]);
+      });
+      document.getElementById('upload-commercial').addEventListener('change', (e) => {
+        if (e.target.files[0]) uploadImage('commercial', e.target.files[0]);
+      });
+
+      document.querySelectorAll('[data-export-admin]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const fmt = a.dataset.exportAdmin;
+          window.location.href = `/admin/api/export/${fmt}?token=` + encodeURIComponent(tokenInput.value);
+        });
+      });
+
+      tokenInput.addEventListener('change', () => {
+        loadContent();
+        loadImages('military', 'military-images');
+        loadImages('commercial', 'commercial-images');
+      });
+    </script>
+  </body>
+</html>

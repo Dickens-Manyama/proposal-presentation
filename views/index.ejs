@@ -9,7 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/public/styles.css" />
+    <link rel="stylesheet" href="/public/proposal.css" />
+    <% if (assets.heroBg) { %>
+    <style>
+      :root {
+        <% if (assets.heroBg) { %>--asset-hero-bg: url('<%= assets.heroBg %>');<% } %>
+        <% if (assets.mapBg) { %>--asset-map-bg: url('<%= assets.mapBg %>');<% } %>
+        <% if (assets.conclusionBg) { %>--asset-conclusion-bg: url('<%= assets.conclusionBg %>');<% } %>
+        <% if (assets.panelOne) { %>--asset-panel-one: url('<%= assets.panelOne %>');<% } %>
+        <% if (assets.panelTwo) { %>--asset-panel-two: url('<%= assets.panelTwo %>');<% } %>
+        <% if (assets.panelThree) { %>--asset-panel-three: url('<%= assets.panelThree %>');<% } %>
+      }
+    </style>
+    <% } %>
   </head>
   <body>
     <div class="grain"></div>
@@ -19,174 +33,36 @@
     <header class="topbar">
       <div class="container d-flex justify-content-between align-items-center py-3">
         <div>
-          <div class="brand-mark">GDBI</div>
+          <div class="brand-mark">GDBIT</div>
           <div class="brand-sub">Green Defence Bamboo Initiative Tanzania</div>
         </div>
-        <nav class="topnav d-none d-lg-flex gap-4">
-          <a href="#story">Story</a>
-          <a href="#partnership">Partnership</a>
-          <a href="#products">Products</a>
+        <nav class="topnav d-none d-lg-flex gap-3 flex-wrap justify-content-end">
+          <a href="#proposal-hero">Summary</a>
+          <a href="#vision-mission">Vision</a>
+          <a href="#strategic-objectives">Objectives</a>
+          <a href="#partnership-structure">Partnership</a>
+          <a href="#value-chain">Value Chain</a>
+          <a href="#plantation-strategy">Plantation</a>
+          <a href="#manufacturing">Manufacturing</a>
+          <a href="#military-products">Military</a>
+          <a href="#commercial-products">Commercial</a>
+          <a href="#environmental-impact">Impact</a>
+          <a href="#investment">Investment</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero section-pad">
-        <div class="container position-relative">
-          <div class="hero-grid">
-            <div class="hero-copy reveal">
-              <span class="eyebrow">Agriculture • Industry • Defence • Climate</span>
-              <h1><%= site.hero.title %></h1>
-              <p class="lead-copy"><%= site.hero.text %></p>
-              <div class="hero-actions">
-                <a class="btn btn-emerald btn-lg" href="#story">Explore the Story</a>
-                <a class="btn btn-outline-light btn-lg" href="#contact">Connect With Us</a>
-              </div>
-              <div class="hero-stats">
-                <div class="stat-card"><span class="stat-value">Green</span><span class="stat-label">focus</span></div>
-                <div class="stat-card"><span class="stat-value">Tanzania</span><span class="stat-label">rooted</span></div>
-                <div class="stat-card"><span class="stat-value">Scalable</span><span class="stat-label">future</span></div>
-              </div>
-            </div>
+    <main class="proposal-document">
+      <%- include('partials/proposal-sections') %>
 
-            <div class="hero-panel reveal">
-              <div class="panel-glow"></div>
-              <div class="hero-image-card hero-image-one"></div>
-              <div class="hero-image-card hero-image-two"></div>
-              <div class="hero-image-card hero-image-three"></div>
-              <div class="hero-tag hero-tag-left">Bamboo as a national asset</div>
-              <div class="hero-tag hero-tag-right">Built for public understanding</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="story" class="section-pad alt-surface">
-        <div class="container">
-          <div class="section-heading reveal">
-            <span class="eyebrow">The Story</span>
-            <h2>A web experience that explains the project in plain language</h2>
-            <p>
-              This site is designed like a public-facing brand page, not a proposal. Visitors learn what the initiative is, why it matters, who is behind it, and how it can grow.
-            </p>
-          </div>
-
-          <div class="story-grid">
-            <% site.sections.forEach(function(section) { %>
-              <article class="story-card reveal">
-                <span class="story-label"><%= section.eyebrow %></span>
-                <h3><%= section.title %></h3>
-                <p><%= section.text %></p>
-              </article>
-            <% }); %>
-          </div>
-        </div>
-      </section>
-
-      <section id="partnership" class="section-pad">
-        <div class="container">
-          <div class="section-heading reveal">
-            <span class="eyebrow">The Partnership</span>
-            <h2>JWAPANO and UNLOCK working together</h2>
-          </div>
-
-          <div class="split-panel reveal">
-            <div class="partner-side partner-left">
-              <h3>JWAPANO Bamboo Tanzania</h3>
-              <p>
-                Bamboo cultivation, plantation management, processing leadership, factory operations, training, and product innovation.
-              </p>
-              <div class="partner-points">
-                <span>Technical expertise</span>
-                <span>Lindi factory operations</span>
-                <span>R&D and manufacturing</span>
-              </div>
-            </div>
-            <div class="partner-divider"><span>Partnership</span></div>
-            <div class="partner-side partner-right">
-              <h3>UNLOCK GROUP LIMITED</h3>
-              <p>
-                Business development, financing, institutional coordination, commercialization, and expansion strategy.
-              </p>
-              <div class="partner-points">
-                <span>Investment structuring</span>
-                <span>Public-private links</span>
-                <span>Market expansion</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-pad alt-surface">
-        <div class="container">
-          <div class="section-heading reveal">
-            <span class="eyebrow">How It Grows</span>
-            <h2>From secure planting to finished products</h2>
-          </div>
-
-          <div class="timeline-strip reveal">
-            <% site.timeline.forEach(function(step, index) { %>
-              <div class="timeline-item">
-                <span><%= String(index + 1).padStart(2, '0') %></span>
-                <strong><%= step %></strong>
-              </div>
-            <% }); %>
-          </div>
-        </div>
-      </section>
-
-      <section id="products" class="section-pad">
-        <div class="container">
-          <div class="section-heading reveal">
-            <span class="eyebrow">Product World</span>
-            <h2>Real bamboo products shown in a cinematic gallery</h2>
-            <p>
-              The gallery uses hosted image sources to feel like a modern website showcase rather than a document appendix.
-            </p>
-          </div>
-
-          <div class="product-grid">
-            <% site.products.forEach(function(product) { %>
-              <article class="gallery-card reveal" style="background-image: url('<%= product.image %>')">
-                <div class="gallery-overlay"></div>
-                <div class="gallery-copy">
-                  <span class="gallery-tag"><%= product.category %></span>
-                  <h3><%= product.title %></h3>
-                  <p><%= product.text %></p>
-                </div>
-              </article>
-            <% }); %>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-pad alt-surface">
-        <div class="container">
-          <div class="row g-4 align-items-stretch">
-            <% site.highlights.forEach(function(item) { %>
-              <div class="col-md-6 col-xl-3 reveal">
-                <article class="feature-card">
-                  <div class="feature-icon"></div>
-                  <h3><%= item.title %></h3>
-                  <p><%= item.text %></p>
-                </article>
-              </div>
-            <% }); %>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section-pad contact-section">
+      <section id="contact" class="section-pad contact-section proposal-section" data-slide="Contact">
         <div class="container">
           <div class="row g-4 align-items-center">
             <div class="col-lg-5 reveal">
               <span class="eyebrow">Contact</span>
               <h2>Start a conversation about bamboo, investment, or collaboration</h2>
-              <p>
-                This site is built to help visitors understand the initiative and quickly reach the team behind it.
-              </p>
+              <p>Reach the GDBIT partnership team to discuss investment, procurement, or strategic collaboration.</p>
             </div>
             <div class="col-lg-7 reveal">
               <form class="contact-form">
@@ -207,9 +83,39 @@
       </section>
     </main>
 
+    <aside class="proposal-toolbar" aria-label="Proposal tools">
+      <div class="toolbar-group">
+        <button type="button" id="btn-presentation" title="Presentation mode">Present</button>
+        <button type="button" data-export="pdf" title="Export PDF">PDF</button>
+        <button type="button" data-export="docx" title="Export Word">Word</button>
+        <button type="button" data-export="pptx" title="Export PowerPoint">PPT</button>
+        <a href="/admin" title="Admin dashboard">Admin</a>
+      </div>
+    </aside>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+      <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+      <img src="" alt="" />
+    </div>
+
+    <div id="presentation-mode" class="presentation-mode" aria-hidden="true">
+      <div class="presentation-slides"></div>
+      <div class="presentation-controls">
+        <button type="button" class="presentation-close btn btn-sm btn-outline-light">Exit</button>
+        <button type="button" class="presentation-prev btn btn-sm btn-outline-light">← Prev</button>
+        <div class="presentation-progress"><span style="width:0%"></span></div>
+        <span class="presentation-counter text-secondary small">1 / 1</span>
+        <button type="button" class="presentation-next btn btn-sm btn-outline-light">Next →</button>
+        <button type="button" class="presentation-autoplay btn btn-sm btn-emerald">Auto-play</button>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/public/app.js"></script>
+    <script src="/public/proposal.js"></script>
+    <script src="/public/presentation.js"></script>
   </body>
 </html>

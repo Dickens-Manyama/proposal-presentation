@@ -1,0 +1,287 @@
+<section id="proposal-hero" class="proposal-hero hero section-pad proposal-section" data-slide="Executive Summary" data-section="1">
+  <div class="proposal-hero-bg" aria-hidden="true"></div>
+  <div class="container position-relative">
+    <div class="hero-grid">
+      <div class="proposal-hero-inner hero-copy reveal">
+        <span class="eyebrow gold-accent"><%= proposal.hero.subtitle %></span>
+        <h1 class="proposal-title"><%= proposal.hero.title %></h1>
+        <p class="lead-copy"><%= proposal.hero.executive_summary %></p>
+        <div class="hero-actions">
+          <a class="btn btn-emerald btn-lg" href="#vision-mission">Continue proposal</a>
+          <a class="btn btn-outline-light btn-lg" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="hero-panel reveal">
+        <div class="panel-glow"></div>
+        <% if (assets.panelOne) { %><div class="hero-image-card hero-image-one"></div><% } %>
+        <% if (assets.panelTwo) { %><div class="hero-image-card hero-image-two"></div><% } %>
+        <% if (assets.panelThree) { %><div class="hero-image-card hero-image-three"></div><% } %>
+        <div class="hero-tag hero-tag-left">JWAPANO × UNLOCK GROUP</div>
+        <div class="hero-tag hero-tag-right">GDBIT Tanzania</div>
+      </div>
+    </div>
+    <ul class="establishment-list reveal">
+      <% proposal.hero.project_establishments.forEach(function(item) { %>
+        <li><%= item %></li>
+      <% }); %>
+    </ul>
+  </div>
+</section>
+
+<section id="vision-mission" class="section-pad alt-surface proposal-section" data-slide="Vision & Mission" data-section="2">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">01 — Vision & Mission</span>
+      <h2>Regional leadership in sustainable bamboo industrialization</h2>
+    </div>
+    <div class="two-col-cards reveal">
+      <article class="glass-card vision-card">
+        <h3>Vision</h3>
+        <p><%= proposal.vision_mission.vision %></p>
+      </article>
+      <article class="glass-card mission-card">
+        <h3>Mission</h3>
+        <ul>
+          <% proposal.vision_mission.mission.forEach(function(item) { %>
+            <li><%= item %></li>
+          <% }); %>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="strategic-objectives" class="section-pad proposal-section" data-slide="Strategic Objectives" data-section="3">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">02 — Strategic Objectives</span>
+      <h2>Building Tanzania's national bamboo value chain</h2>
+    </div>
+    <div class="objective-grid">
+      <% proposal.strategic_objectives.forEach(function(obj, i) { %>
+        <article class="objective-card reveal">
+          <span class="obj-num"><%= String(i + 1).padStart(2, '0') %></span>
+          <p><%= obj %></p>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="partnership-structure" class="section-pad alt-surface proposal-section" data-slide="Partnership Structure" data-section="4">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">03 — Partnership Structure</span>
+      <h2>JWAPANO Bamboo Tanzania and UNLOCK GROUP LIMITED</h2>
+    </div>
+    <div class="partnership-timeline reveal">
+      <div class="timeline-col">
+        <h3><%= proposal.partnership_structure.jwapano.title %></h3>
+        <h4>Roles</h4>
+        <ul><% proposal.partnership_structure.jwapano.roles.forEach(function(r) { %><li><%= r %></li><% }); %></ul>
+        <h4>Contributions</h4>
+        <ul><% proposal.partnership_structure.jwapano.contributions.forEach(function(c) { %><li><%= c %></li><% }); %></ul>
+      </div>
+      <div class="timeline-axis"><span>GDBIT</span></div>
+      <div class="timeline-col">
+        <h3><%= proposal.partnership_structure.unlock_group.title %></h3>
+        <h4>Roles</h4>
+        <ul><% proposal.partnership_structure.unlock_group.roles.forEach(function(r) { %><li><%= r %></li><% }); %></ul>
+        <h4>Contributions</h4>
+        <ul><% proposal.partnership_structure.unlock_group.contributions.forEach(function(c) { %><li><%= c %></li><% }); %></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="value-chain" class="section-pad proposal-section" data-slide="Value Chain" data-section="5">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">04 — National Value Chain</span>
+      <h2>From plantation to markets</h2>
+    </div>
+    <div class="timeline-strip reveal">
+      <% proposal.value_chain.forEach(function(step, index) { %>
+        <div class="timeline-item">
+          <span><%= String(index + 1).padStart(2, '0') %></span>
+          <strong><%= step %></strong>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="plantation-strategy" class="section-pad alt-surface proposal-section" data-slide="Plantation Strategy" data-section="6">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">05 — Plantation Development</span>
+      <h2>Proposed Bamboo Plantation Development</h2>
+    </div>
+    <div class="map-cards reveal">
+      <div class="map-visual" aria-hidden="true">
+        <% proposal.plantation_strategy.locations.forEach(function(loc, i) { %>
+          <div class="map-pin" style="--x:<%= [22,55,38,72][i] %>%;--y:<%= [35,28,62,55][i] %>%"><%= loc %></div>
+        <% }); %>
+      </div>
+      <div class="map-cards-grid">
+        <article class="glass-card">
+          <h3>Locations</h3>
+          <ul><% proposal.plantation_strategy.locations.forEach(function(l) { %><li><%= l %></li><% }); %></ul>
+        </article>
+        <article class="glass-card">
+          <h3>Benefits</h3>
+          <ul><% proposal.plantation_strategy.benefits.forEach(function(b) { %><li><%= b %></li><% }); %></ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="manufacturing" class="section-pad proposal-section" data-slide="Manufacturing" data-section="7">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">06 — Industrial Development</span>
+      <h2>Manufacturing and Industrial Development</h2>
+      <p><%= proposal.manufacturing_development.existing_factory %></p>
+    </div>
+    <div class="industrial-showcase reveal">
+      <% proposal.manufacturing_development.factory_expansion.forEach(function(line) { %>
+        <article class="industrial-card">
+          <div class="industrial-icon"></div>
+          <h3><%= line %></h3>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="military-products" class="section-pad alt-surface proposal-section" data-slide="Military Products" data-section="8">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">07 — Defence Products</span>
+      <h2>Military Products to be Produced</h2>
+      <p>Each product line below is illustrated with matched imagery from the GDBIT military product portfolio.</p>
+    </div>
+    <div class="product-showcase military-showcase">
+      <% militaryGallery.forEach(function(product) { %>
+        <article class="product-showcase-card reveal" data-product="<%= product.name %>">
+          <div class="product-images<%= product.images.length < 2 ? ' single-image' : '' %>">
+            <% product.images.forEach(function(img, idx) { %>
+              <button type="button" class="product-img-btn" data-lightbox="<%= img %>" data-alt="<%= product.name %> — <%= idx + 1 %>" aria-label="View <%= product.name %>">
+                <img src="<%= img %>" alt="<%= product.name %>" loading="lazy" />
+              </button>
+            <% }); %>
+          </div>
+          <div class="product-copy">
+            <h3><%= product.name %></h3>
+            <% if (product.description) { %><p><%= product.description %></p><% } %>
+          </div>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="commercial-products" class="section-pad proposal-section" data-slide="Commercial Products" data-section="9">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">08 — Public & Commercial Products</span>
+      <h2>Public and Commercial Products</h2>
+      <p>Commercial product lines for local markets and export, illustrated with project imagery.</p>
+    </div>
+    <div class="product-showcase commercial-showcase">
+      <% commercialGallery.forEach(function(product) { %>
+        <article class="product-showcase-card reveal" data-product="<%= product.name %>">
+          <div class="product-images<%= product.images.length < 2 ? ' single-image' : '' %>">
+            <% product.images.forEach(function(img, idx) { %>
+              <button type="button" class="product-img-btn" data-lightbox="<%= img %>" data-alt="<%= product.name %> — <%= idx + 1 %>">
+                <img src="<%= img %>" alt="<%= product.name %>" loading="lazy" />
+              </button>
+            <% }); %>
+          </div>
+          <div class="product-copy">
+            <h3><%= product.name %></h3>
+            <% if (product.description) { %><p><%= product.description %></p><% } %>
+          </div>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="environmental-impact" class="section-pad alt-surface proposal-section" data-slide="Environmental Impact" data-section="10">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">09 — Environmental Impact</span>
+      <h2>Climate-smart industrialization</h2>
+    </div>
+    <div class="impact-cards reveal">
+      <% proposal.environmental_impact.items.forEach(function(item) { %>
+        <article class="impact-card"><%= item %></article>
+      <% }); %>
+    </div>
+    <p class="impact-extra reveal"><%= proposal.environmental_impact.extra_text %></p>
+  </div>
+</section>
+
+<section id="economic-impact" class="section-pad proposal-section" data-slide="Economic Impact" data-section="11">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">10 — Economic Impact</span>
+      <h2>Green growth and industrial productivity</h2>
+    </div>
+    <div class="growth-items reveal">
+      <% proposal.economic_impact.forEach(function(item) { %>
+        <article class="growth-card"><%= item %></article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="revenue-streams" class="section-pad alt-surface proposal-section" data-slide="Revenue Streams" data-section="12">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">11 — Revenue Streams</span>
+      <h2>Proposed Revenue Streams</h2>
+    </div>
+    <div class="revenue-grid reveal">
+      <% proposal.revenue_streams.forEach(function(stream, i) { %>
+        <article class="revenue-card" style="--delay:<%= i * 0.08 %>s">
+          <span class="revenue-icon">◆</span>
+          <p><%= stream %></p>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="investment" class="section-pad proposal-section" data-slide="Investment Opportunity" data-section="13">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">12 — Investment Opportunity</span>
+      <h2>Partner with GDBIT</h2>
+    </div>
+    <div class="investor-grid reveal">
+      <% proposal.investment_opportunity.forEach(function(item) { %>
+        <article class="investor-card">
+          <h3><%= item %></h3>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<section id="conclusion" class="proposal-conclusion section-pad proposal-section" data-slide="Conclusion" data-section="14">
+  <div class="conclusion-bg" aria-hidden="true"></div>
+  <div class="container position-relative">
+    <div class="section-heading reveal">
+      <span class="eyebrow gold-accent">13 — Conclusion</span>
+      <h2>A transformative green manufacturing ecosystem</h2>
+      <p class="conclusion-text"><%= proposal.conclusion %></p>
+      <div class="hero-actions mt-4 justify-content-center d-flex flex-wrap gap-3">
+        <a class="btn btn-emerald btn-lg" href="#contact">Connect with GDBIT</a>
+        <button type="button" class="btn btn-outline-light btn-lg" onclick="document.getElementById('btn-presentation').click()">Launch presentation</button>
+      </div>
+    </div>
+  </div>
+</section>
