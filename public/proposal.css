@@ -146,8 +146,8 @@
   position: relative;
   aspect-ratio: 4 / 4.2;
   overflow: hidden;
-  background: #d4d4d4;
-  padding: 12px;
+  background: transparent;
+  padding: 0;
 }
 
 .team-photo::after {
@@ -157,9 +157,14 @@
 .team-photo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  position: relative;
-  z-index: 1;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
+  transform-origin: center center;
+}
+
+.team-card:hover .team-photo img {
+  transform: scale(1.08);
 }
 
 .team-copy {
