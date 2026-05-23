@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= site.title %></title>
     <meta name="description" content="<%= site.tagline %>" />
+    <% if (assets.logo) { %>
+    <link rel="icon" href="<%= assets.logo %>" type="image/jpeg" />
+    <% } %>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -83,6 +86,23 @@
         </div>
       </section>
     </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 py-4">
+        <div class="footer-brand d-flex align-items-center gap-3">
+          <% if (assets.logo) { %>
+            <img class="footer-logo" src="<%= assets.logo %>" alt="Company logo" />
+          <% } %>
+          <div>
+            <div class="footer-title">Green Defence Bamboo Initiative Tanzania</div>
+            <div class="footer-subtitle">UNLOCK GROUP LIMITED × JWAPANO Bamboo Tanzania</div>
+          </div>
+        </div>
+        <div class="footer-note text-md-end">
+          Sustainable bamboo development, production, and partnership planning.
+        </div>
+      </div>
+    </footer>
 
     <aside class="proposal-toolbar" aria-label="Proposal tools">
       <div class="toolbar-group">
