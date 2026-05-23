@@ -27,6 +27,8 @@ const site = {
 
 const workspaceRoot = getWorkspaceRoot(publicDir);
 
+app.use('/team-assets', express.static(workspaceRoot));
+
 function loadProposalViewData() {
   const proposal = readProposal();
   const descriptions = proposal.product_descriptions || {};
@@ -48,15 +50,6 @@ function loadProposalViewData() {
   const teamMembers = attachTeamAssets(proposal.team?.members || [], workspaceRoot);
   return { proposal, militaryGallery, commercialGallery, assets, teamMembers };
 }
-
-app.get('/team-media/:memberId', (req, res) => {
-  const imagePath = getTeamImagePath(req.params.memberId, workspaceRoot);
-  if (!imagePath) {
-    return res.status(404).json({ error: 'Team image not found' });
-  }
-
-  return res.sendFile(imagePath);
-});
 
 app.get('/', (req, res) => {
   const viewData = loadProposalViewData();
