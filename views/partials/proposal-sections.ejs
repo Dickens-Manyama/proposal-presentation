@@ -2,7 +2,7 @@
   <div class="proposal-hero-bg" aria-hidden="true"></div>
   <div class="container position-relative">
     <div class="hero-grid">
-      <div class="proposal-hero-inner hero-copy reveal">
+      <div class="proposal-hero-inner hero-copy reveal" style="grid-column: 1 / -1;">
         <span class="eyebrow gold-accent"><%= proposal.hero.subtitle %></span>
         <h1 class="proposal-title"><%= proposal.hero.title %></h1>
         <p class="lead-copy"><%= proposal.hero.executive_summary %></p>
@@ -11,14 +11,7 @@
           <a class="btn btn-outline-light btn-lg" href="#contact">Contact</a>
         </div>
       </div>
-      <div class="hero-panel reveal">
-        <div class="panel-glow"></div>
-        <% if (assets.panelOne) { %><div class="hero-image-card hero-image-one"></div><% } %>
-        <% if (assets.panelTwo) { %><div class="hero-image-card hero-image-two"></div><% } %>
-        <% if (assets.panelThree) { %><div class="hero-image-card hero-image-three"></div><% } %>
-        <div class="hero-tag hero-tag-left">JWAPANO × UNLOCK GROUP</div>
-        <div class="hero-tag hero-tag-right">GDBIT Tanzania</div>
-      </div>
+      
     </div>
     <ul class="establishment-list reveal">
       <% proposal.hero.project_establishments.forEach(function(item) { %>
