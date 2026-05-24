@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initExportButtons();
   initParallax();
+  initProductGallery();
 });
 
 function initLightbox() {
@@ -58,4 +59,24 @@ function initParallax() {
       scrub: true
     }
   });
+}
+
+function initProductGallery() {
+  const filters = document.querySelectorAll('.filter-btn');
+  if (!filters.length) return;
+
+  const cards = Array.from(document.querySelectorAll('.product-card'));
+
+  function setFilter(filter) {
+    filters.forEach(f => f.classList.toggle('active', f.dataset.filter === filter));
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  filters.forEach(btn => btn.addEventListener('click', () => setFilter(btn.dataset.filter)));
 }

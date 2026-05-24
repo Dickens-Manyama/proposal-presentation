@@ -179,53 +179,45 @@
   </div>
 </section>
 
-<section id="military-products" class="section-pad alt-surface proposal-section" data-slide="Military Products" data-section="9">
+<section id="products" class="section-pad proposal-section" data-slide="Products" data-section="9">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">08 — Defence Products</span>
-      <h2>Military Products to be Produced</h2>
-      <p>Each product line below is illustrated with matched imagery from the GDBIT military product portfolio.</p>
+      <span class="eyebrow">08 — Our Products</span>
+      <h2>Product Galleries</h2>
+      <p>Explore our military and commercial product lines in an interactive gallery. Use the filters to focus on each category.</p>
     </div>
-    <div class="product-showcase military-showcase">
+
+    <div class="gallery-controls reveal mb-4">
+      <button class="btn btn-outline-light filter-btn active" data-filter="all">All</button>
+      <button class="btn btn-outline-light filter-btn" data-filter="military">Military</button>
+      <button class="btn btn-outline-light filter-btn" data-filter="commercial">Commercial</button>
+    </div>
+
+    <div class="product-gallery">
       <% militaryGallery.forEach(function(product) { %>
-        <article class="product-showcase-card reveal" data-product="<%= product.name %>">
-          <div class="product-images<%= product.images.length < 2 ? ' single-image' : '' %>">
-            <% product.images.forEach(function(img, idx) { %>
-              <button type="button" class="product-img-btn" data-lightbox="<%= img %>" data-alt="<%= product.name %> — <%= idx + 1 %>" aria-label="View <%= product.name %>">
-                <img src="<%= img %>" alt="<%= product.name %>" loading="lazy" />
-              </button>
-            <% }); %>
-          </div>
-          <div class="product-copy">
+        <article class="gallery-card product-card reveal" data-category="military" data-product="<%= product.name %>">
+          <div class="gallery-image" style="background-image: url('<%= product.images[0] %>')" aria-hidden="true"></div>
+          <div class="gallery-copy">
+            <span class="gallery-tag">Military</span>
             <h3><%= product.name %></h3>
             <% if (product.description) { %><p><%= product.description %></p><% } %>
+            <div class="mt-3">
+              <button class="btn btn-emerald" data-lightbox="<%= product.images[0] %>">View</button>
+            </div>
           </div>
         </article>
       <% }); %>
-    </div>
-  </div>
-</section>
 
-<section id="commercial-products" class="section-pad proposal-section" data-slide="Commercial Products" data-section="10">
-  <div class="container">
-    <div class="section-heading reveal">
-      <span class="eyebrow">09 — Public & Commercial Products</span>
-      <h2>Public and Commercial Products</h2>
-      <p>Commercial product lines for local markets and export, illustrated with project imagery.</p>
-    </div>
-    <div class="product-showcase commercial-showcase">
       <% commercialGallery.forEach(function(product) { %>
-        <article class="product-showcase-card reveal" data-product="<%= product.name %>">
-          <div class="product-images<%= product.images.length < 2 ? ' single-image' : '' %>">
-            <% product.images.forEach(function(img, idx) { %>
-              <button type="button" class="product-img-btn" data-lightbox="<%= img %>" data-alt="<%= product.name %> — <%= idx + 1 %>">
-                <img src="<%= img %>" alt="<%= product.name %>" loading="lazy" />
-              </button>
-            <% }); %>
-          </div>
-          <div class="product-copy">
+        <article class="gallery-card product-card reveal" data-category="commercial" data-product="<%= product.name %>">
+          <div class="gallery-image" style="background-image: url('<%= product.images[0] %>')" aria-hidden="true"></div>
+          <div class="gallery-copy">
+            <span class="gallery-tag">Commercial</span>
             <h3><%= product.name %></h3>
             <% if (product.description) { %><p><%= product.description %></p><% } %>
+            <div class="mt-3">
+              <button class="btn btn-emerald" data-lightbox="<%= product.images[0] %>">View</button>
+            </div>
           </div>
         </article>
       <% }); %>
